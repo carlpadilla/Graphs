@@ -3,9 +3,11 @@ Simple graph implementation
 """
 from util import Stack, Queue  # These may come in handy
 
+
 class Graph:
 
     """Represent a graph as a dictionary of vertices mapping labels to edges."""
+
     def __init__(self):
         self.vertices = {}
 
@@ -32,14 +34,67 @@ class Graph:
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # make a queue
+        q = Queue()
+        # enqueue our start node
+        q.enqueue(starting_vertex)
+        # make a set to track visited nodes
+        visited = set()
+        # while queue still has things in it
+        while q.size() > 0:
 
-    def dft(self, starting_vertex):
+            # dq from front of the line, this is our current node
+            current_node = q.dequeue()
+        # check if we've visited, if not:
+            if current_node not in visited:
+
+            # mark it as visited
+                visited.add(current_node)
+                print(current_node)
+        # get its neighbors
+                neighbors = self.get_neighbors(current_node)
+        # iterate over neighbors,
+                 for neighbor in neighbors:
+            # add to queue
+                     q.enqueue(neighbor)
+
+
+
+
+   def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # make a stack
+        s = Stack()
+        # push out starting node  onto the stack
+        s.push(starting_vertex)
+        # make a set to track the nodes we've visited
+        visited = set()
+        # as long as our stack isn't empty
+        while s.size() > 0:
+        # pop off th top, this is our current node
+            current_node = s.pop()
+        # check if we have visited this before
+            if current_node not in visited:
+        # if not: mark it as visited, get its neighbors, iterate over the neighbors and add to stack
+                visited.add(current_node)
+                print(current_node)
+
+                neighbors = self.get_neighbors(current_node)
+
+                for neighbor in neighbors:
+                    s.push(neighbor)
+# pseudo code
+
+# s = Stack(
+
+# )
+# visited = set(1)
+
+# current_node = 2
+# neighbors = set(2)
 
     def dft_recursive(self, starting_vertex):
         """
