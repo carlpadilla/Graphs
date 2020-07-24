@@ -93,14 +93,25 @@ class Graph:
 # current_node = 2
 # neighbors = set(2)
 
-    def dft_recursive(self, starting_vertex):
+    def dft_recursive(self, starting_vertex, visited=set()):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
 
         This should be done using recursion.
         """
-        pass  # TODO
+        # base case
+        # progress toward the case
+        # call itself
+        # check if we have been visited
+        if starting_vertex not in visited:
+            # base case: if no neighbors
+            neighbors = self.get_neighbors(starting_vertex)
+            if len(neighbors) == 0:
+                return visited
+        # if we do have neighbors, iterate over them and recurse for each one
+            for neighbor in neighbors:
+                self.dfs_recursive(neighbor, visited)
 
     def bfs(self, starting_vertex, destination_vertex):
         """
@@ -108,7 +119,11 @@ class Graph:
         starting_vertex to destination_vertex in
         breath-first order.
         """
-        pass  # TODO
+        # make a queue
+        # make a set to track visited
+
+        # enqueue a path to the starting vertex
+        path = [starting_vertex]
 
     def dfs(self, starting_vertex, destination_vertex):
         """
